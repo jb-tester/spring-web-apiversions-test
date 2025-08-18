@@ -40,9 +40,17 @@ class TestQueryParamsControllerNoDefaults {
     public String test1Version3Plus() {
         return "test1_3.0+";
     }
+    // Invalid API version formats:
+    /*@GetMapping(path = "/test1", version = "4.0++")
+    public String test1Version4PlusPlus() {
+        return "test1_4.0++";
+    }
+    @GetMapping(path = "/test1", version = "4.0*")
+    public String test1Version4Star() {
+        return "test1_4.0*";
+    }
 
-    // Invalid API version format
-    /*@GetMapping(path = "/test1", version = "3.0.0 RELEASE")
+    @GetMapping(path = "/test1", version = "3.0.0 RELEASE")
     public String test1VersionWithLetters() {
         return "with letters";
     }*/
