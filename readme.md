@@ -2,10 +2,9 @@
 
 https://docs.spring.io/spring-framework/reference/7.0-SNAPSHOT/web/webmvc/mvc-config/api-version.html
 
-First step: use query parameters;
-  no default version
-  no pathMatch prefix
-
+TODO:
+add tests for all configuration methods;
+add the controllers and mappings for useRequestHeader() and useMediaTypeParameter()
 
 for mediatype parameters:
 The useMediaTypeParameter method is used to configure whether API versioning should be enabled and, if so, whether requests must include an API version parameter in their media type, according to Spring Framework documentation. This allows you to specify that API versions should be indicated within the Content-Type or Accept headers, rather than using a separate query parameter or path segment.
