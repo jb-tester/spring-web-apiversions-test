@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.MockMvcBuilderCustomizer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.ConfigurableMockMvcBuilder;
@@ -13,6 +14,7 @@ import org.springframework.web.client.ApiVersionInserter;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("queryParamNoDefaults")
 class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
 
     @Autowired
