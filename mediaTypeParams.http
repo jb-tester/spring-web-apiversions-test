@@ -1,0 +1,14 @@
+###returns error if version is required == true, 1.2 mapping if required == false
+GET http://localhost:8080/mediaType
+
+
+###
+GET http://localhost:8080/mediaType
+Accept: application/json;version_mt_param=1.2.0
+
+###
+GET http://localhost:8080/mediaType
+Accept: application/json;version_mt_param=v1.0.0
+
+
+###

@@ -1,0 +1,64 @@
+### useQueryParams, no default version
+
+###explicitly matching mapping 1.0.0
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.0.0
+
+###explicitly matching mapping 1.1.1
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.1.1
+
+
+### no explicit mapping
+### fails with "Invalid API version: '1.1.0'."
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.1.0
+
+
+### version 1.2+ mapping exists only - fails with "Invalid API version: '1.5.0'."
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.5
+
+### version 1.2+ mapping exists only - fails with "Invalid API version: '1.2.5'."
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.2.5
+
+### version 1.2+ mapping exists and matches!
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=2
+
+### version 1.2+ mapping exists and matches!
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=3.0
+
+### version 1.2+ mapping exists and matches!
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=4.0.0
+
+### version 1.2+ mapping exists only - fails with fails with "Invalid API version: '4.1.0'."
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=4.1.0
+
+###matches version 1.2+
+GET http://localhost:8080/queryParamsNoDefaults?version_query_param=1.2.0
+
+###mapping 4+ exists and matches
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=4
+
+###mapping 4+ exists and matches
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=4.0
+
+###mapping 4+ exists only - fails with "Invalid API version: '4.1.0'."
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=4.1
+
+###mapping 4+ exists and matches
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=5.0.0
+
+###request with no explicit version matches the mapping without versions if exists
+GET http://localhost:8080/queryParamsNoDefaults
+
+
+###no-version request without exact no-version mapping: max version (1.4+) is used
+GET http://localhost:8080/queryParamsNoDefaults/test1
+
+###wildcard for param value: no results ("Invalid API version: '1.3%2B'.")
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=1.3+
+
+###wildcard for param value, the similar wildcard mapping exists: no results ("Invalid API version: '1.3%2B'.")
+GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=3.0+
+
+###explicit param in mapping: fails with "Invalid API version: '1.4'."
+GET http://localhost:8080/queryParamsNoDefaults/test2?
+    version_query_param=1.4
+

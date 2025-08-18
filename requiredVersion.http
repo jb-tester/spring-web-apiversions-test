@@ -1,0 +1,13 @@
+###mapping with matching version 1.0.0
+GET http://localhost:8080/requiredVersions
+Version-header-required: 1.0.0
+
+###no no-version mapping exists; fails with `API version is required`
+GET http://localhost:8080/requiredVersions
+
+###no-version mapping exists; still fails with `API version is required`
+GET http://localhost:8080/requiredVersions/test1
+
+###mapping with matching version 1.5.0
+GET http://localhost:8080/requiredVersions/test1
+Version-Header-Required: 1.5.0

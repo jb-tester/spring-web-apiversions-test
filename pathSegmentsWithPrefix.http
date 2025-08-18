@@ -1,0 +1,22 @@
+###
+GET http://localhost:8080/v1.1/pathSegments
+
+
+###
+GET http://localhost:8080/v1.2/pathSegments
+
+
+###fails with 404
+GET http://localhost:8080/pathSegments
+
+
+###matches version 1.4+
+GET http://localhost:8080/v1.4.0/pathSegments
+
+
+###doesn't match any mapping: "Invalid API version: 'v1.3'."
+GET http://localhost:8080/v1.3/pathSegments
+
+
+
+###

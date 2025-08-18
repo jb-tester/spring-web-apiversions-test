@@ -1,0 +1,21 @@
+###
+GET http://localhost:8080/pathSegments/v1.1
+
+
+
+###
+GET http://localhost:8080/pathSegments/v1.2
+
+
+
+###"Invalid API version: 'No path segment at index 1'."
+GET http://localhost:8080/pathSegments
+
+
+
+###
+GET http://localhost:8080/pathSegments/v1.4.0
+
+
+
+###
