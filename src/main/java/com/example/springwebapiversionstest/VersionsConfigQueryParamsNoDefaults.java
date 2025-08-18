@@ -1,15 +1,13 @@
 package com.example.springwebapiversionstest;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.method.HandlerTypePredicate;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.ApiVersionConfigurer;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfiguration implements WebMvcConfigurer {
+@Profile("queryParamNoDefaults")
+public class VersionsConfigQueryParamsNoDefaults implements WebMvcConfigurer {
 
 	@Override
 	public void configureApiVersioning(ApiVersionConfigurer configurer) {
