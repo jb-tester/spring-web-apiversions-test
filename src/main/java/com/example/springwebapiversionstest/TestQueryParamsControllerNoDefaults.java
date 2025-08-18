@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
-class TestQueryParamsController {
+@RequestMapping("/queryParamsNoDefaults")
+class TestQueryParamsControllerNoDefaults {
 
     @GetMapping(version = "1.0.0")
     public String testExplicitlySpecifiedDefaultVersion() {

@@ -13,14 +13,14 @@ import org.springframework.web.client.ApiVersionInserter;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class SpringWebApiversionsWithQueryParamsTests {
+class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
 
     @Autowired
     private MockMvcTester tester;
 
     @Test
     void testVersion100() {
-        tester.get().uri("/test")
+        tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.0.0")
                 .assertThat()
                 .hasStatusOk()
@@ -29,7 +29,7 @@ class SpringWebApiversionsWithQueryParamsTests {
 
     @Test
     void testVersion111() {
-        tester.get().uri("/test")
+        tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.1.1")
                 .assertThat()
                 .hasStatusOk()
@@ -42,7 +42,7 @@ class SpringWebApiversionsWithQueryParamsTests {
     // the request fails (status 400)
     @Test
     void testVersion000() {
-        tester.get().uri("/test")
+        tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("0.0.0")
                 .assertThat()
                 .hasStatus(400);
@@ -54,7 +54,7 @@ class SpringWebApiversionsWithQueryParamsTests {
       // the request fails (status 400)
     @Test
     void testVersion15() {
-        tester.get().uri("/test")
+        tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.5")
                 .assertThat()
                 .hasStatus(400);
@@ -64,14 +64,14 @@ class SpringWebApiversionsWithQueryParamsTests {
 
     @Test
     void testNoVersionMatch() {
-        tester.get().uri("/test")
+        tester.get().uri("/queryParamsNoDefaults")
                 .assertThat()
                 .hasStatusOk()
                 .body().asString().isEqualTo("test No Explicit Version");
     }
     @Test
     void testNoParamMatchingMaxVersion() {
-        tester.get().uri("/test/test1")
+        tester.get().uri("/queryParamsNoDefaults/test1")
                 .assertThat()
                 .hasStatusOk()
                 .body().asString().isEqualTo("test1_3.0+");
@@ -80,7 +80,7 @@ class SpringWebApiversionsWithQueryParamsTests {
     // the request fails (status 400)
     @Test
     void testWildcardPassing() {
-        tester.get().uri("/test/test1")
+        tester.get().uri("/queryParamsNoDefaults/test1")
                 .apiVersion("1.3+")
                 .assertThat()
                 .hasStatus(400);
@@ -91,7 +91,7 @@ class SpringWebApiversionsWithQueryParamsTests {
     // the request fails (status 400)
     @Test
     void testWildcardPassingWithMatch() {
-        tester.get().uri("/test/test1")
+        tester.get().uri("/queryParamsNoDefaults/test1")
                 .apiVersion("3.0+")
                 .assertThat()
                 .hasStatus(400);
@@ -100,7 +100,7 @@ class SpringWebApiversionsWithQueryParamsTests {
     }
     @Test
     void testVersion300() {
-        tester.get().uri("/test/test1")
+        tester.get().uri("/queryParamsNoDefaults/test1")
                 .apiVersion("3.0.0")
                 .assertThat()
                 .hasStatusOk()
