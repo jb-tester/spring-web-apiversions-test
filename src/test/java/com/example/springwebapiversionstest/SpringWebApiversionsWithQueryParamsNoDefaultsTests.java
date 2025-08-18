@@ -39,11 +39,11 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
 
     // according to docs, the mapping with no explicit version should match all the requests;
     // but it doesn't work this way
-    // the request fails (status 400)
+    // the request fails (status 400) - "Invalid API version: '1.1.0'."
     @Test
     void testVersion000() {
         tester.get().uri("/queryParamsNoDefaults")
-                .apiVersion("0.0.0")
+                .apiVersion("1.1.0")
                 .assertThat()
                 .hasStatus(400);
                 //.hasStatusOk() // actual - 400
@@ -51,7 +51,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
     }
 
       // according to docs, should match version 1.2+, but doesn't
-      // the request fails (status 400)
+      // the request fails (status 400) - "Invalid API version: '1.5'."
     @Test
     void testVersion15() {
         tester.get().uri("/queryParamsNoDefaults")
@@ -76,8 +76,8 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
                 .hasStatusOk()
                 .body().asString().isEqualTo("test1_3.0+");
     }
-    // wildcard passing as parameter, no exact mathcing
-    // the request fails (status 400)
+    // wildcard passing as parameter, no exact matching
+    // the request fails (status 400) ("Invalid API version: '1.3%2B'.")
     @Test
     void testWildcardPassing() {
         tester.get().uri("/queryParamsNoDefaults/test1")
@@ -88,7 +88,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
                 //.body().asString().isEqualTo("test Explicitly Specified Version 1.2+");
     }
     // wildcard passing as parameter, there is the exact matching
-    // the request fails (status 400)
+    // the request fails (status 400) ("Invalid API version: '1.3%2B'.")
     @Test
     void testWildcardPassingWithMatch() {
         tester.get().uri("/queryParamsNoDefaults/test1")
