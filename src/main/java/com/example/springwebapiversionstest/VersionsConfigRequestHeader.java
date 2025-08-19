@@ -15,8 +15,5 @@ public class VersionsConfigRequestHeader implements WebMvcConfigurer {
 		configurer.useRequestHeader("Version-header");
 	}
 
-	/*@Override
-	public void configurePathMatch(PathMatchConfigurer configurer) {
-		configurer.addPathPrefix("/api", HandlerTypePredicate.forAnnotation(RestController.class));
-	}*/
+
 }
