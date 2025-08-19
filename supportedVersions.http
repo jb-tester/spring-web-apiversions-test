@@ -2,65 +2,44 @@
 GET http://localhost:8080/limitedVersions
 Version-Header: 1.1
 
-<> 2025-08-19T234557.400.json
-<> 2025-08-19T234356.200.txt
-<> 2025-08-19T234222.200.txt
-<> 2025-08-19T233612.200.txt
 
 ###
 GET http://localhost:8080/limitedVersions
 Version-Header: 1.2
 
-<> 2025-08-19T234707.200.txt
-<> 2025-08-19T234225.200.txt
-<> 2025-08-19T233618.200.txt
 
 ###
 GET http://localhost:8080/limitedVersions
 Version-Header: 1.3
 
-<> 2025-08-19T234231.200.txt
-<> 2025-08-19T233622.200.txt
 
 ###
 GET http://localhost:8080/limitedVersions
 Version-Header: 2.0
 
-<> 2025-08-19T234742.200.txt
-<> 2025-08-19T234235.200.txt
-<> 2025-08-19T233909.200.txt
-<> 2025-08-19T233651.500.json
-<> 2025-08-19T233626.500.json
+
 
 ###
 GET http://localhost:8080/limitedVersions
 Version-Header: 2.0.0
 
-<> 2025-08-19T234739.200.txt
-<> 2025-08-19T234238.200.txt
-<> 2025-08-19T233913.200.txt
-<> 2025-08-19T233854.500.json
+
 
 ###Invalid API version: '2.0.1'.
 GET http://localhost:8080/limitedVersions
 Version-Header: 2.0.1
 
-<> 2025-08-19T234347.400.json
-<> 2025-08-19T234243.400.json
-<> 2025-08-19T233916.400.json
+
 
 ###there is no mapping, but this version is supported. Still, it will fail with "Invalid API version: '1.4.0'."
 GET http://localhost:8080/limitedVersions
 Version-Header: 1.4.0
 
-<> 2025-08-19T235118.400.json
-<> 2025-08-19T235102.400.json
 
 
 ###the max version is used
 GET http://localhost:8080/limitedVersions
 
-<> 2025-08-19T234343.200.txt
-<> 2025-08-19T234301.200.txt
+
 
 ###

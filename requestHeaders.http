@@ -4,50 +4,41 @@
 GET http://localhost:8080/requestHeader
 Version-header: 1.2.0
 
-<> 2025-08-19T225910.200.txt
-<> 2025-08-19T225638.200.txt
+
 
 ###1.0.0
 GET http://localhost:8080/requestHeader
 
-<> 2025-08-19T230415.200.txt
-<> 2025-08-19T225928.200.txt
-<> 2025-08-19T225913.200.txt
-<> 2025-08-19T225653.200.txt
+
 
 ###400 BAD_REQUEST "Invalid API version: '1.0.0'."
 GET http://localhost:8080/requestHeader
 Version-header: 1.0.0
 
-<> 2025-08-19T230524.400.json
-<> 2025-08-19T230332.400.json
-<> 2025-08-19T230026.400.json
-<> 2025-08-19T225937.400.json
 
 ###1.3+
 GET http://localhost:8080/requestHeader
 Version-header: 1.3.0
 
-<> 2025-08-19T230004.200.txt
-<> 2025-08-19T225955.400.json
+
 
 ###1.3+
 GET http://localhost:8080/requestHeader
 Version-header: 1.3
 
-<> 2025-08-19T230422.200.txt
+
 
 ###400 BAD_REQUEST "Invalid API version: '1.5'."
 GET http://localhost:8080/requestHeader
 Version-header: 1.5
 
-<> 2025-08-19T230443.400.json
+
 
 ###"Invalid API version: '1.7'."
 GET http://localhost:8080/requestHeader/test1
 Version-header: 1.7
 
-<> 2025-08-19T231055.400.json
+
 
 ###"Required header 'Version-header' is not present."
 GET http://localhost:8080/requestHeader/test1

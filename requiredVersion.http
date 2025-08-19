@@ -2,34 +2,20 @@
 GET http://localhost:8080/requiredVersions
 Version-header-required: 1.0.0
 
-<> 2025-08-20T000826.200.txt
-<> 2025-08-20T000530.200.txt
-<> 2025-08-20T000418.200.txt
-<> 2025-08-20T000106.200.txt
-<> 2025-08-19T235830.200.txt
+
 
 ###
 GET http://localhost:8080/requiredVersions
 
-<> 2025-08-20T000828.200.txt
-<> 2025-08-20T000534.200.txt
-<> 2025-08-20T000424.200.txt
-<> 2025-08-20T000102.200.txt
-<> 2025-08-19T235843.200.txt
 
 ###
 GET http://localhost:8080/requiredVersions/test1
 
-<> 2025-08-20T001052.200.txt
-<> 2025-08-20T000831.200.txt
-<> 2025-08-20T000538.200.txt
-<> 2025-08-20T000429.200.txt
+
 
 ###
 GET http://localhost:8080/requiredVersions/test1
 Version-Header-Required: 1.5.0
 
-<> 2025-08-20T001133.200.txt
-<> 2025-08-20T001122.400.json
 
 ###
