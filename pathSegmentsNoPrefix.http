@@ -1,21 +1,21 @@
 ###
 GET http://localhost:8080/pathSegments/v1.1
 
-<> f-7.txt
+
 
 ###
 GET http://localhost:8080/pathSegments/v1.2
 
-<> f-8.txt
+
 
 ###"Invalid API version: 'No path segment at index 1'."
 GET http://localhost:8080/pathSegments
 
-<> 2025-08-18T201922.400.json
+
 
 ###
 GET http://localhost:8080/pathSegments/v1.4.0
 
-<> f-9.txt
+
 
 ###
