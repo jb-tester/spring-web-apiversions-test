@@ -3,6 +3,7 @@ package com.example.springwebapiversionstest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,6 +42,11 @@ class TestQueryParamsControllerNoDefaults {
     @GetMapping(path = "/test1", version = "3.0+")
     public String test1Version3Plus() {
         return "test1_3.0+";
+    }
+    // the explicit request param should not be specified: the attempt to use it for versioning fails
+    @GetMapping(path = "/test2")
+    public String testExplicitparam(@RequestParam("version_query_param") String reqparam) {
+        return "explicit request param: " + reqparam;
     }
     // Invalid API version formats:
     /*@GetMapping(path = "/test1", version = "4.0++")

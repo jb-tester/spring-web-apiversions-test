@@ -33,3 +33,8 @@ GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=1.3+
 
 ###wildcard for param value, the similar wildcard mapping exists: no results ("Invalid API version: '1.3%2B'.")
 GET http://localhost:8080/queryParamsNoDefaults/test1?version_query_param=3.0+
+
+###explicit param in mapping: fails with "Invalid API version: '1.4'."
+GET http://localhost:8080/queryParamsNoDefaults/test2?
+    version_query_param=1.4
+
