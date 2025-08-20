@@ -43,6 +43,10 @@ Version-header: 1.7
 ###"Required header 'Version-header' is not present."
 GET http://localhost:8080/requestHeader/test1
 
-<> 2025-08-19T231310.400.json
+
 
 ###
+GET http://localhost:8080/requestHeader/test2
+Version-Header: 1.2.0
+rh1: foo
+rh2: bar

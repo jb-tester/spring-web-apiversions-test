@@ -38,5 +38,11 @@ public class TestRequestHeaderController {
 
         return "version 1.3+";
     }
+   // for http request generation testing
+    @GetMapping(path = "/test2", version = "1.2.0")
+    public String withDifferentRequestHeaders(@RequestHeader(value = "rh1") String rh1, @RequestHeader(value = "rh2") String rh2) {
+
+        return "version 120 with diff req headers: " + rh1 + " " + rh2;
+    }
 
 }

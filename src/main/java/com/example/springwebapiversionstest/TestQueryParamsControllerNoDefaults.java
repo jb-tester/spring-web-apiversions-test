@@ -48,6 +48,11 @@ class TestQueryParamsControllerNoDefaults {
     public String testExplicitparam(@RequestParam("version_query_param") String reqparam) {
         return "explicit request param: " + reqparam;
     }
+    // for http request generation testing
+    @GetMapping(path = "/test2", version = "4.0+")
+    public String testWithSomeDifferentReqPrams(@RequestParam("p1") String reqparam1, @RequestParam("p2") String reqparam2) {
+        return "with other request params " + reqparam1 + " " + reqparam2;
+    }
     // Invalid API version formats:
     /*@GetMapping(path = "/test1", version = "4.0++")
     public String test1Version4PlusPlus() {
