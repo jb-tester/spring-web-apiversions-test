@@ -1,0 +1,17 @@
+###
+GET http://localhost:8080/mediaType
+
+<> 2025-08-21T184511.200.txt
+
+###
+GET http://localhost:8080/mediaType
+Content-Type: application/json;version_mt_param=1.2.0
+
+###
+GET http://localhost:8080/mediaType
+Content-Type: application/json;version_mt_param=1.0.0
+
+<> 2025-08-21T184705.200.txt
+<> 2025-08-21T184539.200.txt
+
+###

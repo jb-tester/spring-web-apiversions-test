@@ -8,16 +8,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @Profile("mediaType")
-public class VersionsConfigQueryMediaTypeParam implements WebMvcConfigurer {
+public class VersionsConfigMediaType implements WebMvcConfigurer {
 
 	@Override
 	public void configureApiVersioning(ApiVersionConfigurer configurer) {
-		//configurer.setDefaultVersion("1.0.0");
 		configurer.useMediaTypeParameter(MediaType.APPLICATION_JSON, "version_mt_param");
 	}
 
-	/*@Override
-	public void configurePathMatch(PathMatchConfigurer configurer) {
-		configurer.addPathPrefix("/api", HandlerTypePredicate.forAnnotation(RestController.class));
-	}*/
+
 }
