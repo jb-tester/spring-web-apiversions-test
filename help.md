@@ -34,5 +34,7 @@ Features:
  - completion for headers/params in tests and HTTP client
  - navigation to matching endpoints!!!!
  - correct representation in Endpoints/Structure view
+ - Swagger generation (correct versions)
+ - matching details in Debugger?
 
 
