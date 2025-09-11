@@ -1,24 +1,21 @@
 ### useQueryParams, default version = 1.0.0
 
-###request provides no version - the mapping with default version is used instead of no-version mapping
+###request provides no version, exact matchin no-version mapping exists - the mapping with default version is used instead of no-version mapping
 GET http://localhost:8080/queryParamsWithDefault
 
-###explicitely provided version that matches default
-GET http://localhost:8080/queryParamsWithDefault?version_query_param=1.0.0
 
-
-###Fails with "Invalid API version: '1.1.0'."
+###explicitely provided version that doesn't match any mapping - Fails with "Invalid API version: '1.1.0'."
 GET http://localhost:8080/queryParamsWithDefault?version_query_param=1.1.0
 
 ###explicitely provided version that matches one of the mappings versions
 GET http://localhost:8080/queryParamsWithDefault?version_query_param=2.0.0
 
-###explicitely provided version that matches default version; no mappings with explicit default version exists
+###explicitely provided version that matches default version; no mappings with explicit default version exists: no-version mapping is used
 GET http://localhost:8080/queryParamsWithDefault/test1?version_query_param=1.0.0
 
-###no explicit versions neither in request nor in mapping
-GET http://localhost:8080/queryParamsWithDefault/test1?version_query_param=1.0.0
+###no explicit versions neither in request nor in mapping: the matching no-version mapping is used
+GET http://localhost:8080/queryParamsWithDefault/test1
 
-<> 2025-08-18T191958.200.txt
-
+###no explicit version in request: mapping with default version is used
+GET http://localhost:8080/queryParamsWithDefault/test2
 ###
