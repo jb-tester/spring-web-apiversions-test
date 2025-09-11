@@ -21,49 +21,92 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
     private MockMvcTester tester;
 
     @Test
-    void testVersion100() {
+    void testExplicitlyMatchingVersion100() {
         tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.0.0")
                 .assertThat()
                 .hasStatusOk()
-                .body().asString().isEqualTo("test Explicitly Specified Version 1.0.0");
+                .body().asString().isEqualTo("test 1.0.0");
     }
 
     @Test
-    void testVersion111() {
+    void testExplicitlyMatchingVersion111() {
         tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.1.1")
                 .assertThat()
                 .hasStatusOk()
-                .body().asString().isEqualTo("test Explicitly Specified Version 1.1.1");
+                .body().asString().isEqualTo("test 1.1.1");
     }
 
 
-    // according to docs, the mapping with no explicit version should match all the requests;
-    // but it doesn't work this way
+
     // the request fails (status 400) - "Invalid API version: '1.1.0'."
     @Test
-    void testVersion000() {
+    void testVersion110ThatDoesntMatchAnyMapping() {
         tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.1.0")
                 .assertThat()
                 .hasStatus(400);
-                //.hasStatusOk() // actual - 400
-                //.body().asString().isEqualTo("test No Explicit Version");
-    }
 
+    }
+    // according to docs, should match version 1.2+ and does!
+    @Test
+    void testVersion12ForMapping12Plus() {
+        tester.get().uri("/queryParamsNoDefaults")
+                .apiVersion("1.2")
+                .assertThat()
+                .hasStatusOk()
+                .body().asString().isEqualTo("test 1.2+");
+
+    }
+    // according to docs, should match version 1.2+, but doesn't
+    // the request fails (status 400) - "Invalid API version: '1.2.5'."
+    @Test
+    void testVersion125ForMapping12Plus() {
+        tester.get().uri("/queryParamsNoDefaults")
+                .apiVersion("1.2.5")
+                .assertThat()
+                .hasStatus(400);
+
+    }
       // according to docs, should match version 1.2+, but doesn't
       // the request fails (status 400) - "Invalid API version: '1.5'."
     @Test
-    void testVersion15() {
+    void testVersion15ForMapping12Plus() {
         tester.get().uri("/queryParamsNoDefaults")
                 .apiVersion("1.5")
                 .assertThat()
                 .hasStatus(400);
-                //.hasStatusOk()
-                //.body().asString().isEqualTo("test Explicitly Specified Version 1.2+");
-    }
 
+    }
+    // according to docs, should match version 1.2+ and does!
+    @Test
+    void testVersion2ForMapping12Plus() {
+        tester.get().uri("/queryParamsNoDefaults")
+                .apiVersion("2")
+                .assertThat()
+                .body().asString().isEqualTo("test 1.2+");
+
+    }
+    // according to docs, should match version 1.2+ and does!
+    @Test
+    void testVersion30ForMapping12Plus() {
+        tester.get().uri("/queryParamsNoDefaults")
+                .apiVersion("3.0")
+                .assertThat()
+                .body().asString().isEqualTo("test 1.2+");
+
+    }
+    // according to docs, should match version 1.2+, but doesn't
+    // the request fails (status 400) - "Invalid API version: '4.1.0'."
+    @Test
+    void testVersion410ForMapping12Plus() {
+        tester.get().uri("/queryParamsNoDefaults")
+                .apiVersion("4.1.0")
+                .assertThat()
+                .hasStatus(400);
+
+    }
     @Test
     void testNoVersionMatch() {
         tester.get().uri("/queryParamsNoDefaults")
@@ -76,7 +119,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
         tester.get().uri("/queryParamsNoDefaults/test1")
                 .assertThat()
                 .hasStatusOk()
-                .body().asString().isEqualTo("test1_3.0+");
+                .body().asString().isEqualTo("test1_4+");
     }
     // wildcard passing as parameter, no exact matching
     // the request fails (status 400) ("Invalid API version: '1.3%2B'.")
@@ -86,8 +129,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
                 .apiVersion("1.3+")
                 .assertThat()
                 .hasStatus(400);
-                //.hasStatusOk()
-                //.body().asString().isEqualTo("test Explicitly Specified Version 1.2+");
+
     }
     // wildcard passing as parameter, there is the exact matching
     // the request fails (status 400) ("Invalid API version: '1.3%2B'.")
@@ -97,8 +139,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
                 .apiVersion("3.0+")
                 .assertThat()
                 .hasStatus(400);
-                //.hasStatusOk()
-                //.body().asString().isEqualTo("test1_3.0+");
+
     }
     @Test
     void testVersion300() {
