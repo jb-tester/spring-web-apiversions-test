@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+// note the false-positive warning about not consumed `version` path variable
 @RestController
 @Profile("pathSegmentNoPrefix")
-@RequestMapping("/pathSegments/{v}")
+@RequestMapping("/pathSegments/{version}")
 class TestPathSegmentsNoPrefixController {
 
     @GetMapping(version ="1.1")
-    public String getV1() {
-        return "pathSegments - V1";
+    public String getV11() {
+        return "pathSegments - V1.1";
     }
     @GetMapping(version ="1.2")
-    public String getV2() {
-        return "pathSegments - V2";
+    public String getV12() {
+        return "pathSegments - V1.2";
     }
     @GetMapping
     public String getNoVersion() {
@@ -25,6 +25,6 @@ class TestPathSegmentsNoPrefixController {
     }
     @GetMapping(version = "1.4+")
     public String getV4Plus() {
-        return "pathSegments - V4+";
+        return "pathSegments - V1.4+";
     }
 }

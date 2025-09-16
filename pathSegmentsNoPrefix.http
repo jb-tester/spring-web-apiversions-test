@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8080/pathSegments/v1.1
+GET http://localhost:8080/pathSegments/1.1
 
 
 
@@ -14,7 +14,7 @@ GET http://localhost:8080/pathSegments
 
 
 ###
-GET http://localhost:8080/pathSegments/v1.4.0
+GET http://localhost:8080/pathSegments/version1.4.0
 
 
 
