@@ -1,0 +1,32 @@
+###
+GET http://localhost:8080/multiple?version_query_param_one=1.0.0
+
+###
+GET http://localhost:8080/multiple?version_query_param_two=1.0.0
+
+###
+GET http://localhost:8080/multiple
+Version-header-one: 1.0.0
+
+###
+GET http://localhost:8080/multiple
+Version-header-two: 1.0.0
+
+###
+GET http://localhost:8080/multiple
+Accept: application/json;version_mt_param_one=v1.0.0
+
+###
+GET http://localhost:8080/multiple
+Accept: application/json;version_mt_param_two=v1.0.0
+
+
+###
+GET http://localhost:8080/multiple
+Accept: application/json;version_mt_param_one=v1.2.0
+
+###
+GET http://localhost:8080/multiple
+Accept: application/json;version_mt_param_two=v1.2.5
+###
+
