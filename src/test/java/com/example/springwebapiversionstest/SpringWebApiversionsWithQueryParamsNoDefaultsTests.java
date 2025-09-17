@@ -154,7 +154,7 @@ class SpringWebApiversionsWithQueryParamsNoDefaultsTests {
 
         @Override
         public void customize(ConfigurableMockMvcBuilder<?> builder) {
-            builder.apiVersionInserter(ApiVersionInserter.useQueryParam("version_query_param"))
+            builder.apiVersionInserter(ApiVersionInserter.useQueryParam("version-query-param"))
                     .alwaysDo(MockMvcResultHandlers.print());
         }
     }

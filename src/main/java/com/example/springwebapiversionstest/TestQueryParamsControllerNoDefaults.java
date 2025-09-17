@@ -50,9 +50,15 @@ class TestQueryParamsControllerNoDefaults {
     }
 
     // the explicit request param should not be specified: the attempt to use it for versioning fails
-    @GetMapping(path = "/test2")
-    public String testExplicitparam(@RequestParam("version_query_param") String reqparam) {
+    // may be we can provide the inspection here?
+    @GetMapping(path = "/test2", params = "version-query-param=1.4.0")
+    public String testExplicitSameNamedParam(@RequestParam("version-query-param") String reqparam) {
         return "explicit request param: " + reqparam;
+    }
+    // but if the explicit request param with the different name is specified, it works correctly
+    @GetMapping(path = "/test8", params = {"version-param=8"})
+    public String testExplicitDiffNameParam(@RequestParam("version-param") String reqparam) {
+        return "explicit request param with the different name: " + reqparam;
     }
     // for http request generation testing
     @GetMapping(path = "/test3", version = "5.0+")

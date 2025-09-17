@@ -12,7 +12,7 @@ public class VersionsConfigQueryParamsNoDefaults implements WebMvcConfigurer {
 	@Override
 	public void configureApiVersioning(ApiVersionConfigurer configurer) {
 		configurer.setVersionRequired(false);
-		configurer.useQueryParam("version_query_param");
+		configurer.useQueryParam("version-query-param");
 	}
 
 	/*@Override
